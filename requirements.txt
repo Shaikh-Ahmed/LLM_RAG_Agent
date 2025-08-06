@@ -10,3 +10,4 @@ ipykernel
 pymupdf
 python-docx
 gradio
+faiss-cpu
