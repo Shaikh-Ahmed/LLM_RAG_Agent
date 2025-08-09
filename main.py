@@ -15,7 +15,7 @@ import gradio as gr
 
 # ----------- Config -----------
 if not os.environ.get("GROQ_API_KEY"):
-  os.environ["GROQ_API_KEY"] = "Your_GROQ_API_KEY_Here"  # Set your Groq API key here
+  os.environ["GROQ_API_KEY"] = "Your_API_Key_here"  # Set your Groq API key here
 
 HARDCODED_FOLDER_PATH = "./Insurance PDFs"  # 👈 Change this path to your folder
 
@@ -97,13 +97,15 @@ def ques_responses(question, history, system_prompt, token_limit):
 
     instruction = f"""
 
-            1. If user is asking you a question then answer the question = {question}.
+            1. Answer the question: {question} based on the provided context.
 
-            2. If you do not find any answer for any {question}, return "Sorry, I don't know."
+            2. If you do not find any relevant information for the question in the provided documents, simply respond with "Sorry, I don't know."
 
             3. If the user asks you to summarize the context, then summarize it in a concise manner.
 
-            4. If the user asks you to explain something, then explain it in a simple and clear manner. Do not repeat the greeting lines while answering for the same session.
+            4. If the user asks you to explain something, then explain it in a simple and clear manner.
+
+            5. Do not include any greeting messages like "Hi, I'm Meera, chatbot assistant" in your responses. Provide direct, helpful answers without unnecessary introductions.
             """
 
     template = """
